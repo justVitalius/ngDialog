@@ -34,11 +34,11 @@
 
     m.provider('ngDialog', function () {
         var defaults = this.defaults = {
-            className: 'db_screenlocker',
+            className: '',
             disableAnimation: false,
             plain: false,
             showClose: true,
-            closeByDocument: true,
+            closeByDocument: false,
             closeByEscape: true,
             closeByNavigation: false,
             appendTo: false,
