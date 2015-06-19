@@ -26,7 +26,7 @@
     var animationEndSupport = isDef(style.animation) || isDef(style.WebkitAnimation) || isDef(style.MozAnimation) || isDef(style.MsAnimation) || isDef(style.OAnimation);
     var animationEndEvent = 'animationend webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend';
     var focusableElementSelector = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]';
-    var disabledAnimationClass = 'ngdialog-disabled-animation';
+    var disabledAnimationClass = 'db_disable-animation';
     var forceBodyReload = false;
     var scopes = {};
     var openIdStack = [];
@@ -142,7 +142,7 @@
                             $body.unbind('keydown');
                         }
 
-                        if (!$dialog.hasClass('ngdialog-closing')){
+                        if (!$dialog.hasClass('db_closing')){
                             dialogsCount -= 1;
                         }
 
@@ -162,7 +162,7 @@
                                     privateMethods.resetBodyPadding();
                                 }
                                 $rootScope.$broadcast('ngDialog.closed', $dialog, value);
-                            }).addClass('ngdialog-closing');
+                            }).addClass('db_closing');
                         } else {
                             scope.$destroy();
                             $dialog.remove();
@@ -451,7 +451,7 @@
 
                             $dialog = $el('<div id="dialog-box' + localID + '" class="dialog-box"></div>');
                             $dialog.html((options.overlay ?
-                                '<div class="ngdialog-overlay"></div><div class="db-window" role="document">' + template + '</div>' :
+                                '<div class="db-overlay"></div><div class="db-window" role="document">' + template + '</div>' :
                                 '<div class="db-window" role="document">' + template + '</div>'));
 
                             $dialog.data('$ngDialogOptions', options);
@@ -564,7 +564,7 @@
                             }
 
                             closeByDocumentHandler = function (event) {
-                                var isOverlay = options.closeByDocument ? $el(event.target).hasClass('ngdialog-overlay') : false;
+                                var isOverlay = options.closeByDocument ? $el(event.target).hasClass('db-overlay') : false;
                                 var isCloseBtn = $el(event.target).hasClass('db-closer');
 
                                 if (isOverlay || isCloseBtn) {
