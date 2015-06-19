@@ -21,13 +21,15 @@
     "directive"
   ],
   "author": {
-    "name": ["Dmitri Voronianski", "Vitaly Mineev"],
-    "email": ["dmitri.voronianski@gmail.com", "justvitalius@gmail.com"],
+    "name": "Dmitri Voronianski",
+    "email": "dmitri.voronianski@gmail.com",
+    "web": "http://pixelhunter.me",
+    "twitter": "voronianski"
   },
-  "bugs": "https://github.com/justvitalius/ngDialog/issues",
+  "bugs": "https://github.com/likeastore/ngDialog/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/justvitalius/ngDialog"
+    "url": "https://github.com/likeastore/ngDialog"
   },
   "readmeFilename": "README.md",
   "license": "MIT",
