@@ -158,7 +158,7 @@
                             $dialog.unbind(animationEndEvent).bind(animationEndEvent, function () {
                                 $dialog.remove();
                                 if (dialogsCount === 0) {
-                                    $body.removeClass('ngdialog-open');
+                                    $body.removeClass('db_lock');
                                     privateMethods.resetBodyPadding();
                                 }
                                 $rootScope.$broadcast('ngDialog.closed', $dialog, value);
@@ -167,7 +167,7 @@
                             scope.$destroy();
                             $dialog.remove();
                             if (dialogsCount === 0) {
-                                $body.removeClass('ngdialog-open');
+                                $body.removeClass('db_lock');
                                 privateMethods.resetBodyPadding();
                             }
                             $rootScope.$broadcast('ngDialog.closed', $dialog, value);
@@ -446,7 +446,7 @@
                                 locals = setup.locals;
 
                             if (options.showClose) {
-                                template += '<div class="ngdialog-close"></div>';
+                                template += '<div class="db-closer"></div>';
                             }
 
                             $dialog = $el('<div id="dialog-box' + localID + '" class="dialog-box"></div>');
@@ -528,7 +528,7 @@
 
                                 $compile($dialog)(scope);
                                 var widthDiffs = $window.innerWidth - $body.prop('clientWidth');
-                                $body.addClass('ngdialog-open');
+                                $body.addClass('db_lock');
                                 var scrollBarWidth = widthDiffs - ($window.innerWidth - $body.prop('clientWidth'));
                                 if (scrollBarWidth > 0) {
                                     privateMethods.setBodyPadding(scrollBarWidth);
@@ -565,7 +565,7 @@
 
                             closeByDocumentHandler = function (event) {
                                 var isOverlay = options.closeByDocument ? $el(event.target).hasClass('ngdialog-overlay') : false;
-                                var isCloseBtn = $el(event.target).hasClass('ngdialog-close');
+                                var isCloseBtn = $el(event.target).hasClass('db-closer');
 
                                 if (isOverlay || isCloseBtn) {
                                     publicMethods.close($dialog.attr('id'), isCloseBtn ? '$closeButton' : '$document');
