@@ -34,7 +34,7 @@
 
     m.provider('ngDialog', function () {
         var defaults = this.defaults = {
-            className: 'ngdialog-theme-default',
+            className: 'db_screenlocker',
             disableAnimation: false,
             plain: false,
             showClose: true,
@@ -222,7 +222,7 @@
                         var el = angular.element(ev.currentTarget);
                         var $dialog;
 
-                        if (el.hasClass('ngdialog')) {
+                        if (el.hasClass('dialog-box')) {
                             $dialog = el;
                         } else {
                             $dialog = privateMethods.getActiveDialog();
@@ -332,7 +332,7 @@
                     },
 
                     getActiveDialog: function () {
-                        var dialogs = document.querySelectorAll('.ngdialog');
+                        var dialogs = document.querySelectorAll('.dialog-box');
 
                         if (dialogs.length === 0) {
                             return null;
@@ -418,7 +418,7 @@
                     open: function (opts) {
                         var options = angular.copy(defaults);
                         var localID = ++globalID;
-                        var dialogID = 'ngdialog' + localID;
+                        var dialogID = 'dialog-box' + localID;
                         openIdStack.push(dialogID);
 
                         opts = opts || {};
@@ -449,10 +449,10 @@
                                 template += '<div class="ngdialog-close"></div>';
                             }
 
-                            $dialog = $el('<div id="ngdialog' + localID + '" class="ngdialog"></div>');
+                            $dialog = $el('<div id="dialog-box' + localID + '" class="dialog-box"></div>');
                             $dialog.html((options.overlay ?
-                                '<div class="ngdialog-overlay"></div><div class="ngdialog-content" role="document">' + template + '</div>' :
-                                '<div class="ngdialog-content" role="document">' + template + '</div>'));
+                                '<div class="ngdialog-overlay"></div><div class="db-window" role="document">' + template + '</div>' :
+                                '<div class="db-window" role="document">' + template + '</div>'));
 
                             $dialog.data('$ngDialogOptions', options);
 
@@ -523,7 +523,7 @@
                             };
 
                             $timeout(function () {
-                                var $activeDialogs = document.querySelectorAll('.ngdialog');
+                                var $activeDialogs = document.querySelectorAll('.dialog-box');
                                 privateMethods.deactivateAll($activeDialogs);
 
                                 $compile($dialog)(scope);
@@ -688,7 +688,7 @@
                     },
 
                     closeAll: function (value) {
-                        var $all = document.querySelectorAll('.ngdialog');
+                        var $all = document.querySelectorAll('.dialog-box');
 
                         // Reverse order to ensure focus restoration works as expected
                         for (var i = $all.length - 1; i >= 0; i--) {

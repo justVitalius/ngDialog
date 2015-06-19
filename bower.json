@@ -1,11 +1,9 @@
 {
   "name": "ngDialog",
-  "homepage": "https://github.com/likeastore/ngDialog",
+  "homepage": "https://github.com/justVitalius/ngDialog",
   "description": "Modal dialogs and popups provider for Angular.js applications",
   "main": [
-    "js/ngDialog.js",
-    "css/ngDialog.css",
-    "css/ngDialog-theme-default.css"
+    "js/ngDialog.js"
   ],
   "keywords": [
     "angular.js",
@@ -18,7 +16,8 @@
     "directive"
   ],
   "authors": [
-    "Dmitri Voronianski"
+    "Dmitri Voronianski",
+    "Vitaly Mineev"
   ],
   "license": "MIT",
   "ignore": [
