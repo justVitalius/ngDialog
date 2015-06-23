@@ -18,8 +18,6 @@
 }(this, function (angular) {
     'use strict';
 
-    console.log('hello vit');
-
     var m = angular.module('ngDialog', []);
 
     var $el = angular.element;
@@ -566,7 +564,6 @@
                                 footer = $dialog.querySelectorAll(footerClass)[0];
                                 container = $dialog.querySelectorAll(containerClass)[0];
 
-                                console.log('find', header, container, footer);
                                 if (container){
                                     if (header){
                                         marginTop = header.offsetHeight;
