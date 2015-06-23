@@ -18,6 +18,8 @@
 }(this, function (angular) {
     'use strict';
 
+    console.log('hello vit');
+
     var m = angular.module('ngDialog', []);
 
     var $el = angular.element;
@@ -449,10 +451,10 @@
                                 template += '<div class="db-closer icon i-times i_x"></div>';
                             }
 
-                            $dialog = $el('<div id="dialog-box' + localID + '" class="dialog-box"></div>');
+                            $dialog = $el('<div id="dialog-box' + localID + '" class="dialog-box flexbox-grid"></div>');
                             $dialog.html((options.overlay ?
-                                '<div class="db-overlay"></div><div class="db-window" role="document">' + template + '</div>' :
-                                '<div class="db-window" role="document">' + template + '</div>'));
+                                '<div class="db-overlay"></div>' + template + '</div>' :
+                                template + '</div>'));
 
                             $dialog.data('$ngDialogOptions', options);
 
@@ -546,7 +548,40 @@
                                 } else {
                                     $rootScope.$broadcast('ngDialog.opened', $dialog);
                                 }
+
                             });
+
+                            ////////////////////////////////////////////////
+                            // APPLYING MARGIN-TOP & MARGIN-BOTTOM
+                            ////////////////////////////////////////////////
+                            $dialog.unbind(animationEndEvent).bind(animationEndEvent, function () {
+                                var headerClass = '.js-db-header',
+                                    footerClass = '.js-db-footer',
+                                    containerClass = '.js-db-container',
+                                    marginTop = 0,
+                                    marginBottom = 0,
+                                    header, footer, container;
+
+                                header = $dialog.querySelectorAll(headerClass)[0];
+                                footer = $dialog.querySelectorAll(footerClass)[0];
+                                container = $dialog.querySelectorAll(containerClass)[0];
+
+                                console.log('find', header, container, footer);
+                                if (container){
+                                    if (header){
+                                        marginTop = header.offsetHeight;
+                                    }
+                                    if (footer){
+                                        marginBottom = footer.offsetHeight;
+                                    }
+                                    container.style.marginTop = marginTop + 'px';
+                                    container.style.marginBottom = marginBottom + 'px';
+                                }
+                            });
+
+                            ////////////////////////////////////////////////
+                            // THE END :)
+                            ////////////////////////////////////////////////
 
                             if (!keydownIsBound) {
                                 $body.bind('keydown', privateMethods.onDocumentKeydown);
