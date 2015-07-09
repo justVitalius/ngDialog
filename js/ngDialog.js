@@ -446,7 +446,7 @@
                                 locals = setup.locals;
 
                             if (options.showClose) {
-                                template += '<div class="db-closer icon i-times i_x"></div>';
+                                template += '<div class="db-closer icon i-times i_3x"></div>';
                             }
 
                             $dialog = $el('<div id="dialog-box' + localID + '" class="dialog-box flexbox-grid"></div>');
